@@ -1,0 +1,22 @@
+start.spring.io 사이트로 프로젝트가 생성인 안될 때 사용방법
+https://web-dev.tistory.com/988
+
+D:\>javac InstallCert.java
+
+D:\>java -cp . InstallCert start.spring.io
+
+D:\>keytool -exportcert -keystore jssecacerts -storepass changeit -file output.cert -alias start.spring.io-1
+
+D:\>keytool -importcert -keystore D:\DEV_2020\jdk\jdk1.8.0_261\jre\lib\security\cacerts -storepass changeit -file output.cert -alias letsencrypt
+
+
+java -cp . InstallCert  nodeclipse.github.io
+keytool -exportcert -keystore jssecacerts -storepass changeit -file output.cert -alias nodeclipse.github.io-1
+keytool -importcert -keystore D:\DEV_2020\jdk\jdk1.8.0_261\jre\lib\security\cacerts -storepass changeit -file output.cert -alias letsencrypt4
+
+
+
+java -cp . InstallCert  services.gradle.org
+keytool -exportcert -keystore jssecacerts -storepass changeit -file output.cert -alias services.gradle.org-1
+keytool -importcert -keystore D:\DEV_2020\jdk\jdk1.8.0_261\jre\lib\security\cacerts -storepass changeit -file output.cert -alias letsencrypt5
+

@@ -1,0 +1,4 @@
+pip 명령어로 설치가 안 될 때 사용 방법
+https://harryp.tistory.com/831
+
+pip --trusted-host pypi.org --trusted-host files.pythonhosted.org install selenium
