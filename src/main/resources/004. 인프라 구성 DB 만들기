@@ -1,0 +1,8 @@
+docker run -d -p 13306:3306 -v wp-db-vol:/docker/mysql/ -e MYSQL_ROOT_PASSWORD=password --name mysql5.7 mysql:5.7 --character-set-server=utf8 --collation-server=utf8_unicode_ci
+
+
+mysql -u root -p 
+show databases;
+create schema demo01;
+create user 'user01'@'%' identified by 'user01';
+grant all privileges on demo01.* to 'user01'@'%';

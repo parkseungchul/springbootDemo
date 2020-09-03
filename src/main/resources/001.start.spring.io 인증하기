@@ -20,3 +20,8 @@ java -cp . InstallCert  services.gradle.org
 keytool -exportcert -keystore jssecacerts -storepass changeit -file output.cert -alias services.gradle.org-1
 keytool -importcert -keystore D:\DEV_2020\jdk\jdk1.8.0_261\jre\lib\security\cacerts -storepass changeit -file output.cert -alias letsencrypt5
 
+
+
+java -cp . InstallCert  dbeaver.io
+keytool -exportcert -keystore jssecacerts -storepass changeit -file output.cert -alias dbeaver.io-1
+keytool -importcert -keystore D:\DEV_2020\jdk\jdk1.8.0_261\jre\lib\security\cacerts -storepass changeit -file output.cert -alias letsencrypt6
