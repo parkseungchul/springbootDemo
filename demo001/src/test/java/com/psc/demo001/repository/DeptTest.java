@@ -82,26 +82,39 @@ public class DeptTest {
 	}
 	
 	@Test
-	public void A005_부서명칭_검색() {
-		deptRepository.findByDnameContaining("00").forEach(dept -> {
+	public void A005_부서명칭_포함_검색() {
+		String searchDname = "11";
+		
+		deptRepository.findByDnameContaining(searchDname).forEach(dept -> {
 			log.debug(dept.toString());
 		});
+
+		deptRepository.findByDnameContainingOrderByDnameAsc(searchDname).forEach(dept -> {
+			log.debug(dept.toString());
+		});
+		
+		log.debug(deptRepository.countByDnameContaining(searchDname).toString());
 	}
 	
 	@Test
-	public void A006_부서명칭_검색_단순_페이징() {
-		Pageable pageable = PageRequest.of(0, 10, Sort.Direction.DESC, "dname");
-		deptRepository.findByDnameContaining("00", pageable).forEach(dept -> {
-			log.debug(dept.toString());
-		});
+	public void A006_부서명칭_단순검색_페이징() {
+		String searchDname = "11";
+		int pageSize = 10;
+		
+		// 총 페이지를 인지
+		Long cnt = deptRepository.countByDnameContaining(searchDname);
+		int pageCnt = (int) (cnt/pageSize);
+		for (int i=0; i< pageCnt + 1; i++) {
+			log.debug("==========[" + (i+1) + "] Page ==========");
+			Pageable pageable = PageRequest.of(i, pageSize, Sort.Direction.ASC, "dname");
+			deptRepository.findByDnameContaining(searchDname, pageable).forEach(dept -> {
+				log.debug(dept.toString());
+			});
+		}
 	}
-	
-	
+
 	@Test
 	public void A007_부서_정보_다건_삭제() {
 		deptRepository.deleteAll();
 	}
-	
-	
-	
 }
