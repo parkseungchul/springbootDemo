@@ -19,4 +19,9 @@
  
  ${spring-boot.version}
  
+ 1. JPA 
+ 
+ 2. log-back.xml 
+ 
+ 3. java parameter
  
