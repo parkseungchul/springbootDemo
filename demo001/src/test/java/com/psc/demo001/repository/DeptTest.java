@@ -41,7 +41,7 @@ public class DeptTest {
 	}
 	
 	@Test
-	public void A001_부서_정보_단건_삽입() {
+	public void DEPT001_부서_정보_단건_삽입() {
 		Dept dept = new Dept();
 		dept.setDeptno(10);
 		dept.setLoc("서울");
@@ -51,7 +51,7 @@ public class DeptTest {
 	}
 
 	@Test
-	public void A002_부서_정보_단건_수정() {
+	public void DEPT002_부서_정보_단건_수정() {
 		Dept dept = new Dept();
 		dept.setDeptno(10);
 		dept.setLoc("서울");
@@ -61,7 +61,7 @@ public class DeptTest {
 	}
 	
 	@Test
-	public void A003_부서_정보_단건_삭제(){
+	public void DEPT003_부서_정보_단건_삭제(){
 		Dept dept = new Dept();
 		dept.setDeptno(10);
 		deptRepository.delete(dept);
@@ -69,7 +69,7 @@ public class DeptTest {
 	}
 	
 	@Test
-	public void A004_부서_정보_다건_삽입() {
+	public void DEPT004_부서_정보_다건_삽입() {
 		List<Dept> deptList = new ArrayList<Dept>(); 
 		for(int i = 1000; i <2001; i++) {
 			Dept dept = new Dept();
@@ -82,7 +82,7 @@ public class DeptTest {
 	}
 	
 	@Test
-	public void A005_부서명칭_포함_검색() {
+	public void DEPT005_부서명칭_포함_검색() {
 		String searchDname = "11";
 		
 		deptRepository.findByDnameContaining(searchDname).forEach(dept -> {
@@ -97,7 +97,7 @@ public class DeptTest {
 	}
 	
 	@Test
-	public void A006_부서명칭_단순검색_페이징() {
+	public void DEPT006_부서명칭_단순검색_페이징() {
 		String searchDname = "11";
 		int pageSize = 10;
 		
@@ -114,7 +114,7 @@ public class DeptTest {
 	}
 
 	@Test
-	public void A007_부서_정보_다건_삭제() {
+	public void DEPT007_부서_정보_다건_삭제() {
 		deptRepository.deleteAll();
 	}
 }
