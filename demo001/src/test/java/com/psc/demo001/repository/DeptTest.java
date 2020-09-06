@@ -30,6 +30,8 @@ public class DeptTest {
 	@Autowired
 	DeptRepository deptRepository;
 	
+	public int testDept = 9999;
+	
 	public void 부서_정보_단건_조회(Integer deptno) {
 		Optional<Dept> depts = deptRepository.findById(10);
 		
@@ -43,29 +45,29 @@ public class DeptTest {
 	@Test
 	public void DEPT001_부서_정보_단건_삽입() {
 		Dept dept = new Dept();
-		dept.setDeptno(10);
+		dept.setDeptno(testDept);
 		dept.setLoc("서울");
 		dept.setDname("HR");
 		deptRepository.save(dept);
-		부서_정보_단건_조회(10);
+		부서_정보_단건_조회(testDept);
 	}
 
 	@Test
 	public void DEPT002_부서_정보_단건_수정() {
 		Dept dept = new Dept();
-		dept.setDeptno(10);
+		dept.setDeptno(testDept);
 		dept.setLoc("서울");
 		dept.setDname("SAL");
 		deptRepository.save(dept);
-		부서_정보_단건_조회(10);
+		부서_정보_단건_조회(testDept);
 	}
 	
 	@Test
 	public void DEPT003_부서_정보_단건_삭제(){
 		Dept dept = new Dept();
-		dept.setDeptno(10);
+		dept.setDeptno(testDept);
 		deptRepository.delete(dept);
-		부서_정보_단건_조회(10);
+		부서_정보_단건_조회(testDept);
 	}
 	
 	@Test
@@ -117,4 +119,9 @@ public class DeptTest {
 	public void DEPT007_부서_정보_다건_삭제() {
 		deptRepository.deleteAll();
 	}
+	
+
+
+	
+	
 }

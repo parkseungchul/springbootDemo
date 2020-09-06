@@ -7,26 +7,41 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.CreationTimestamp;
-
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 @Entity
 @Table(name="tbl_emp")
 public class Emp {
+	
+
+	public Emp() {}
+	public Emp(Integer empno, String ename, String job, Integer mgr, Timestamp hiredate, Integer sal, Integer comm, Integer deptno) {
+		this.empno = empno;
+		this.ename = ename;
+		this.job = job;
+		this.mgr = mgr;
+		this.hiredate = hiredate;
+		this.sal = sal;
+		this.comm = comm;
+		Dept dept = new Dept();
+		dept.setDeptno(deptno);
+		this.dept = dept;
+		
+		
+	}
 	
 	@Id
 	private Integer empno;
 	private String ename;
 	private String job;
 	private Integer mgr;
-	
-    @CreationTimestamp
     private Timestamp hiredate;
-    
 	private Integer sal;
 	private Integer comm;
 	
