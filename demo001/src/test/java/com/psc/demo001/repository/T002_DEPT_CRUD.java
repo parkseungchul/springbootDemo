@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.jdo.annotations.Transactional;
+
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,21 +27,21 @@ import lombok.extern.slf4j.Slf4j;
 @Commit
 @SpringBootTest
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class DeptTest {
+public class T002_DEPT_CRUD {
 
 	@Autowired
 	DeptRepository deptRepository;
 	
+	@Autowired
+	EmpRepository empRepository;
+	
 	public int testDept = 9999;
 	
-	public void 부서_정보_단건_조회(Integer deptno) {
-		Optional<Dept> depts = deptRepository.findById(10);
-		
-		if (depts.isPresent()) {
-			log.info(depts.get().toString());
-		}else {
-			log.debug("Data not found! deptno: " + deptno);
-		}
+	@Test
+	@Transactional
+	public void DEPT000_부서사원_정보_다건_삭제() {
+		empRepository.deleteAll();
+		deptRepository.deleteAll();
 	}
 	
 	@Test
@@ -105,21 +107,31 @@ public class DeptTest {
 		
 		// 총 페이지를 인지
 		Long cnt = deptRepository.countByDnameContaining(searchDname);
+		log.debug("Total Size [" + cnt + "]");
+		if (cnt == 0) {
+			return;
+		}
 		int pageCnt = (int) (cnt/pageSize);
 		for (int i=0; i< pageCnt + 1; i++) {
-			log.debug("==========[" + (i+1) + "] Page ==========");
+			log.debug("========== [" + (i+1) + "] Page ==========");
 			Pageable pageable = PageRequest.of(i, pageSize, Sort.Direction.ASC, "dname");
 			deptRepository.findByDnameContaining(searchDname, pageable).forEach(dept -> {
 				log.debug(dept.toString());
 			});
 		}
 	}
-
-	@Test
-	public void DEPT007_부서_정보_다건_삭제() {
-		deptRepository.deleteAll();
-	}
 	
+	public void 부서_정보_단건_조회(Integer deptno) {
+		Optional<Dept> depts = deptRepository.findById(10);
+		
+		if (depts.isPresent()) {
+			log.info(depts.get().toString());
+		}else {
+			log.debug("Data not found! deptno: " + deptno);
+		}
+	}
+
+
 
 
 	

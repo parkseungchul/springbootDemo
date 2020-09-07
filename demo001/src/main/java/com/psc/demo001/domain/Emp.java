@@ -2,8 +2,10 @@ package com.psc.demo001.domain;
 
 import java.sql.Timestamp;
 
+import javax.jdo.annotations.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -14,7 +16,7 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
+@ToString(exclude = "dept")
 @Entity
 @Table(name="tbl_emp")
 public class Emp {
@@ -46,6 +48,7 @@ public class Emp {
 	private Integer comm;
 	
     @ManyToOne
+    @JoinColumn(name="deptno", nullable=false)
     private Dept dept;
 	
 	

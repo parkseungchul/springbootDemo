@@ -15,7 +15,7 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
+@ToString(exclude = "empList")
 @Entity
 @Table(name="tbl_dept")
 public class Dept {
@@ -31,9 +31,7 @@ public class Dept {
 	private Integer deptno;
 	private String dname;
 	private String loc;
-	
-	
-    //@OneToMany(mappedBy = "deptno", cascade  = CascadeType.ALL, fetch =FetchType.LAZY)
-    @OneToMany(mappedBy = "dept", cascade  = CascadeType.ALL, fetch =FetchType.LAZY)
+
+    @OneToMany(mappedBy = "dept", cascade  = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Emp> empList;
 }

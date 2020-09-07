@@ -30,7 +30,7 @@ import lombok.extern.slf4j.Slf4j;
 @Commit
 @SpringBootTest
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class DeptEmpData {
+public class T001_DEPT_EMP_기본_데이터 {
 	
 	@Autowired
 	EmpRepository empRepository;
@@ -41,7 +41,7 @@ public class DeptEmpData {
 
     @Test
     @Transactional
-    public void 사원_부서_삭제() {
+    public void a001_EMP_DEPT_전체삭제() {
     	empRepository.deleteAll();
     	deptRepository.deleteAll();
     }
@@ -49,13 +49,15 @@ public class DeptEmpData {
 	
 	@Test
 	@Transactional
-	public void 사원_부서_삽입(){
+	public void a002_DEPT_EPM_전체삽입(){
 
 		List<Dept> deptList = new ArrayList<Dept>();
 		Dept dept10 = new Dept(10, "ACCOUNTING", "NEW YORK"); deptList.add(dept10);
+		Dept dept15 = new Dept(15, "TEST", "TEST"  ); deptList.add(dept15);
 		Dept dept20 = new Dept(20, "RESEARCH"  , "DALLAS"  ); deptList.add(dept20);
 		Dept dept30 = new Dept(30, "SALES"     , "CHICAGO" ); deptList.add(dept30);
 		Dept dept40 = new Dept(40, "OPERATIONS", "BOSTON"  ); deptList.add(dept40);
+
 		deptRepository.saveAll(deptList);
 
 	
