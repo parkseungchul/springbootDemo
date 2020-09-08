@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layouts/layout1/singleLayout">
+
+<th:block layout:fragment="title">
+    <title>single</title>
+</th:block>
+
+<!-- 고유 CSS 추가 -->
+<th:block layout:fragment="css">
+    <link rel="stylesheet" th:href="@{/custom/css/single.css}"/>
+</th:block>
+
+<!-- 고유 스크립트 추가 -->
+<th:block layout:fragment="script">
+    <script th:inline="javascript" th:src="@{/custom/js/single.js}"></script>
+    <script th:inline="javascript">
+    $(document).ready(function () {
+        console.log('single ready');
+    });
+    </script>
+</th:block>
+
+
+<div layout:fragment="content">
+<h5>현재 싱글 화면</h5>
+    <a th:href="@{/multiple}">멀티 화면 가기</a>
+    
+    
+<table class="table">
+    <tr>
+        <td>count</td>
+        <td>deptno</td>
+        <td>dname</td>
+        <td>loc</td>
+    </tr>
+    <tbody>
+    <tr th:each="deptDto, inter:${deptDtos}">
+        <td th:text="${inter.index}"></td>
+        <td th:text="${deptDto.deptno}"></td>
+        <td th:text="${deptDto.dname}"></td>
+        <td th:text="${deptDto.loc}"></td>
+    </tr>
+    </tbody>
+</table>
+</div>
+</html>
