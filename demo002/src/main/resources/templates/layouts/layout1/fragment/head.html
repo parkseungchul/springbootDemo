@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head th:fragment="headFragment">
+	<meta charset="UTF-8" />
+	
+		<!-- 컨텐츠페이지의 title 들어감 -->
+		<th:block layout:fragment="title"/>
+		
+		<!-- 공통으로 쓰이는 css 파일-->
+		<link rel="stylesheet" th:href="@{/standard/css/bootstrap.min.css}" />
+		
+		<!-- 공통으로 쓰이는 js 파일-->
+		<script th:src="@{/standard/js/jquery-3.3.1.min.js}"></script>
+		<script th:src="@{/standard/js/bootstrap.min.js}"></script>
+		
+		<!-- 컨텐츠페이지의 css 파일 -->
+        <th:block layout:fragment="css"></th:block>
+		
+	</head>
+</html>
+
+

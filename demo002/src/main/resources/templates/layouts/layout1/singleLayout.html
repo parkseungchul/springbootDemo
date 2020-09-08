@@ -1,0 +1,20 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head th:replace="layouts/layout1/fragment/head :: headFragment"></head>
+<body>
+	<div layout:fragment="content">
+
+
+
+
+	</div>
+	
+	<!-- 공통으로 쓰이는 js 파일 -->
+	<script th:src="@{/standard/js/jquery-3.3.1.min.js}"></script>
+	<script th:src="@{/standard/js/bootstrap.min.js}"></script>
+	<!-- 컨텐츠페이지의 js 파일 -->
+	<th:block layout:fragment="script"></th:block>	
+</body>
+</html>

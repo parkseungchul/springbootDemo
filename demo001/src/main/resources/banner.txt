@@ -29,4 +29,5 @@
  
  TODO 
   - Table에 PK가 두 개 이상일 경우 
+  - LOB 타입 추가
   - DB Table 날짜 자동 업데이트 방법 
