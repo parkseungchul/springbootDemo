@@ -21,10 +21,12 @@
  
  ${spring-boot.version}
  
- 1. Thymeleaf layout 
+ 1. Thymeleaf 기반  Layout 개발
  
- TODO 
-  - 싱글
-  - 멀티 
+ 2. Single, Multiple 화면 표준 개발
+ 
+ 3. Spring Initialization 클래스 구현 
+ 
+ TODO  
   - 세션 값 표현하기
   
