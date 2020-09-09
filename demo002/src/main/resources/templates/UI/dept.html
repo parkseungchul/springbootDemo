@@ -30,7 +30,22 @@
 	    <li><a th:href="@{/multiple}">Multiple Layout</a></li>
 	    <li><a th:href="@{/deptList}">DEPT List</a></li>
 	</ul>
-<hr>   
-Single Layout
+<hr>    
+<table class="table">
+    <tr>
+        <td>부서번호</td>
+        <td th:text="${deptDto.deptno}"/>
+    </tr>
+    <tr>
+    	<td>부서명</td>
+    	<td th:text="${deptDto.dname}"/>
+    </tr>
+    <tr>
+        <td>부서 위치</td>
+    	<td th:text="${deptDto.loc}"/>
+    </tr>
+</table>
+
+
 </div>
 </html>

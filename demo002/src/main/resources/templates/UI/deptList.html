@@ -23,27 +23,27 @@
 </th:block>
 
 
-<div layout:fragment="content">
-<h5>현재 싱글 화면</h5>
-    <a th:href="@{/multiple}">멀티 화면 가기</a>
-    
-    
-    
-<table class="table">
-    <tr>
-        <td>count</td>
-        <td>deptno</td>
-        <td>dname</td>
-        <td>loc</td>
-    </tr>
-    <tr th:each="deptDto, inter:${deptDtos}">
-        <td th:text="${inter.index}"></td>
-        <td th:text="${deptDto.deptno}"></td>
-        <td th:text="${deptDto.dname}"></td>
-        <td th:text="${deptDto.loc}"></td>
-    </tr>
-</table>
-
-
+<div layout:fragment="content" class="container">
+<hr>
+	<ul>
+	    <li><a th:href="@{/}">Single Layout</a></li>
+	    <li><a th:href="@{/multiple}">Multiple Layout</a></li>
+	    <li><a th:href="@{/deptList}">DEPT List</a></li>
+	</ul>
+<hr>    
+	<table class="table">
+	    <tr>
+	        <td>count</td>
+	        <td>deptno</td>
+	        <td>dname</td>
+	        <td>loc</td>
+	    </tr>
+	    <tr th:each="deptDto, inter:${deptDtos}">
+	        <td th:text="${inter.index}"></td>
+	        <td><a th:href="@{/deptList/} + ${deptDto.deptno}" th:text="${deptDto.deptno}"></a></td>
+	        <td th:text="${deptDto.dname}"></td>
+	        <td th:text="${deptDto.loc}"></td>
+	    </tr>
+	</table>
 </div>
 </html>

@@ -1,1 +1,1 @@
-alert('include multiple javascript');
+alert('Include Multiple JavaScript!');

@@ -8,13 +8,16 @@
 </th:block>
 
 <div class="container" layout:fragment="content">
-<h5>현재 멀티 화면</h5>
-<ul>
-    <li><a th:href="@{/}">싱글 화면 가기</a></li>
-</ul>
+<hr>
+	<ul>
+	    <li><a th:href="@{/}">Single Layout</a></li>
+	    <li><a th:href="@{/multiple}">Multiple Layout</a></li>
+	    <li><a th:href="@{/deptList}">DEPT List</a></li>
+	</ul>
+<hr>    
+
+Multiple Layout
 </div>
-
-
 <!-- 고유 CSS 추가 -->
 <th:block layout:fragment="css">
 	<link rel="stylesheet" th:href="@{/custom/css/multiple.css}"/>

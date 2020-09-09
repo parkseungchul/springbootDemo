@@ -7,4 +7,6 @@ import com.psc.demo001.dto.DeptDto;
 public interface DeptService {
 
 	public List<DeptDto> listDept();
+	
+	public DeptDto selectDeptDto(int deptno);
 }

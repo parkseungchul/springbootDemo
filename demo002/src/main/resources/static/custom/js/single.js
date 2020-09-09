@@ -1,1 +1,1 @@
-alert('include single javascript');
+alert('Include Single JavaScript!');
