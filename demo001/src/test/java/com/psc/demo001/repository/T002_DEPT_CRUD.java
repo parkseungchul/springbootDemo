@@ -6,7 +6,7 @@ import java.util.Optional;
 
 import javax.jdo.annotations.Transactional;
 
-import org.junit.Assert;
+import org.junit.Assert; 
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +18,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
-
 import com.psc.demo001.domain.Dept;
 
 import lombok.extern.slf4j.Slf4j;
@@ -60,12 +59,26 @@ public class T002_DEPT_CRUD {
 
 	@Test
 	public void DEPT002_부서_정보_단건_수정() {
+		
+		String loc = "서울";
+		
 		Dept dept = new Dept();
 		dept.setDeptno(testDept);
-		dept.setLoc("서울");
+		dept.setLoc(loc);
 		dept.setDname("SAL");
 		deptRepository.save(dept);
-		부서_정보_단건_조회(testDept);
+		
+		Optional<Dept> optDept =  부서_정보_단건_조회(testDept);
+		
+		// 결과 값에 의한 성공 실패 만들기
+		if(optDept.isPresent()) {
+			Dept resultDept = optDept.get();
+			Assert.assertEquals(resultDept.getDeptno(), dept.getDeptno());
+			Assert.assertEquals(resultDept.getDname() , dept.getDname());
+			Assert.assertEquals(resultDept.getLoc()   , dept.getLoc());
+		}else {
+			Assert.assertTrue(false);
+		}
 	}
 	
 	@Test
@@ -73,7 +86,10 @@ public class T002_DEPT_CRUD {
 		Dept dept = new Dept();
 		dept.setDeptno(testDept);
 		deptRepository.delete(dept);
-		부서_정보_단건_조회(testDept);
+		Optional<Dept> optDept = 부서_정보_단건_조회(testDept);
+		
+		// 결과 값에 의한 성공 실패 만들기
+		Assert.assertTrue(!optDept.isPresent());
 	}
 	
 	@Test
