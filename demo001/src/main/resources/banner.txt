@@ -25,7 +25,7 @@
 
  3. JPA 기반의 EMP, DEPT 테이블을 이용하여 CRUD
 
- 4. Junit 을 이용한 CRUD Test
+ 4. JUnit 을 이용한 CRUD Test, Assert 를 이용한 결과 체크 
  
  TODO 
   - Table에 PK가 두 개 이상일 경우 

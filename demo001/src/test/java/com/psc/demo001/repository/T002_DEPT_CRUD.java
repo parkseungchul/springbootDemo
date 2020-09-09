@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import javax.jdo.annotations.Transactional;
 
+import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -51,7 +52,10 @@ public class T002_DEPT_CRUD {
 		dept.setLoc("서울");
 		dept.setDname("HR");
 		deptRepository.save(dept);
-		부서_정보_단건_조회(testDept);
+		Optional<Dept> optDept = 부서_정보_단건_조회(testDept);
+		
+		// 결과 값에 의한 성공 실패 만들기
+		Assert.assertTrue(optDept.isPresent());
 	}
 
 	@Test
@@ -121,14 +125,14 @@ public class T002_DEPT_CRUD {
 		}
 	}
 	
-	public void 부서_정보_단건_조회(Integer deptno) {
-		Optional<Dept> depts = deptRepository.findById(10);
-		
-		if (depts.isPresent()) {
-			log.info(depts.get().toString());
+	public Optional<Dept> 부서_정보_단건_조회(Integer deptno) {
+		Optional<Dept> optDept = deptRepository.findById(deptno);
+		if (optDept.isPresent()) {
+			log.info(optDept.get().toString());
 		}else {
 			log.debug("Data not found! deptno: " + deptno);
 		}
+		return optDept;
 	}
 
 
