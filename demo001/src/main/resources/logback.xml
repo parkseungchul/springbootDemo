@@ -37,7 +37,7 @@
 		<appender-ref ref="console" />
 		<appender-ref ref="file" />
 	</logger>
-	<logger name="com.psc.demo001" level="DEBUG" additivity="false">
+	<logger name="com.psc" level="DEBUG" additivity="false">
 		<appender-ref ref="console" />
 		<appender-ref ref="file" />
 	</logger>

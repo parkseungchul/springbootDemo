@@ -15,7 +15,7 @@
 	</appender>
 
 	<appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>D:/DEV_2020/logs/demo002.log</file>
+		<file>D:/DEV_2020/logs/demo003.log</file>
 		<!--file>${log_path}/${log_name}.log</file-->
 		<encoder>
 			<pattern>[%d{yyyy-MM-dd HH:mm:ss}:%-3relative][%thread] %-5level %logger{35} - %msg%n</pattern>
