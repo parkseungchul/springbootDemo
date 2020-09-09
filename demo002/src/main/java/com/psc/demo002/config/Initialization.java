@@ -1,4 +1,4 @@
-package com.psc.demo001.config;
+package com.psc.demo002.config;
 
 import javax.annotation.PostConstruct;
 

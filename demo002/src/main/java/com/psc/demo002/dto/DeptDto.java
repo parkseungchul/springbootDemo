@@ -1,4 +1,4 @@
-package com.psc.demo001.dto;
+package com.psc.demo002.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

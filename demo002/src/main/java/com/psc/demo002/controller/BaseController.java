@@ -1,4 +1,4 @@
-package com.psc.demo001.controller;
+package com.psc.demo002.controller;
 
 import java.util.List;
 
@@ -10,8 +10,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.psc.demo001.dto.DeptDto;
-import com.psc.demo001.service.DeptService;
+import com.psc.demo002.dto.DeptDto;
+import com.psc.demo002.service.DeptService;
 
 import groovyjarjarpicocli.CommandLine.Parameters;
 

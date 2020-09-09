@@ -1,8 +1,8 @@
-package com.psc.demo001.service;
+package com.psc.demo002.service;
 
 import java.util.List;
 
-import com.psc.demo001.dto.DeptDto;
+import com.psc.demo002.dto.DeptDto;
 
 public interface DeptService {
 

@@ -1,4 +1,4 @@
-package com.psc.demo001.service;
+package com.psc.demo002.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.stereotype.Service;
 
-import com.psc.demo001.dto.DeptDto;
+import com.psc.demo002.dto.DeptDto;
 
 import lombok.extern.slf4j.Slf4j;
 
