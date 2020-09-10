@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${data}"/>
+</head>
+<body>
+	<h1 th:text="${data}"/>
+	<ul>
+	    <li><a th:href="@{/member}">member</a>  사용자는 그룹과 무관하게 접근 가능</li>
+	    <li><a th:href="@{/manager}">manager</a> manager, admin 그룹 접근 가능</a></li>
+	    <li><a th:href="@{/admin}">admin</a> admin 그룹 접근 가능</li>
+	</ul>
+	<a th:href="@{/logout}">로그아웃</a>
+	
+</body>
+</html>

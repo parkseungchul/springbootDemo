@@ -37,6 +37,14 @@
 		<appender-ref ref="console" />
 		<appender-ref ref="file" />
 	</logger>
+	
+	<!-- 스프링 시큐리티 관련 로그 -->
+	<logger name="org.springframework.security" level="DEBUG" additivity="false">
+		<appender-ref ref="console" />
+		<appender-ref ref="file" />
+	</logger>	
+	
+	
 	<logger name="com.psc" level="DEBUG" additivity="false">
 		<appender-ref ref="console" />
 		<appender-ref ref="file" />

@@ -1,7 +1,5 @@
 package com.psc.demo002.config;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
