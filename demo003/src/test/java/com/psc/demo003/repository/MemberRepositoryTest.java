@@ -1,5 +1,7 @@
 package com.psc.demo003.repository;
 
+import java.util.Optional;
+
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,6 +38,7 @@ public class MemberRepositoryTest {
 		member.setName("멤버");
 		member.setPassword(passwordEncoder.encode("member"));
 		member.setRole(Role.ROLE_MEMBER);
+		member.setEnabled(true);
 		memberRepository.save(member);
 		
 		member = new Member();
@@ -43,6 +46,7 @@ public class MemberRepositoryTest {
 		member.setName("매니저");
 		member.setPassword(passwordEncoder.encode("manager"));
 		member.setRole(Role.ROLE_MANAGER);
+		member.setEnabled(true);
 		memberRepository.save(member);
 		
 		member = new Member();
@@ -50,8 +54,18 @@ public class MemberRepositoryTest {
 		member.setName("어드민");
 		member.setPassword(passwordEncoder.encode("admin"));
 		member.setRole(Role.ROLE_ADMIN);
+		member.setEnabled(true);
 		memberRepository.save(member);
+	}
+	
+	@Test
+	public void A001_사용자_정보_조회() {
 		
+		Optional<Member> optionalMember = memberRepository.findById("admin");
+		
+		if(optionalMember.isPresent()) {
+			log.debug(optionalMember.get().toString());
+		}
 	}
 	
 

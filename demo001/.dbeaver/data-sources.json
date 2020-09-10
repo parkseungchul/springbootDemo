@@ -1,31 +1,6 @@
 {
 	"folders": {},
 	"connections": {
-		"mysql5-1745329fa68-51e529c0c1a03be": {
-			"provider": "mysql",
-			"driver": "mysql5",
-			"name": "localhost",
-			"save-password": true,
-			"navigator-show-only-entities": true,
-			"navigator-hide-folders": true,
-			"navigator-hide-virtual": true,
-			"read-only": false,
-			"configuration": {
-				"host": "localhost",
-				"port": "13306",
-				"database": "demo01",
-				"url": "jdbc:mysql://localhost:13306/demo01",
-				"home": "MySQL Binaries",
-				"type": "dev",
-				"properties": {
-					"connectTimeout": "20000"
-				},
-				"auth-model": "native"
-			},
-			"custom-properties": {
-				"database.meta.separate.connection": "false"
-			}
-		},
 		"mysql5-174718e18c7-18d479dd11e858dc": {
 			"provider": "mysql",
 			"driver": "mysql5",
@@ -34,33 +9,17 @@
 			"show-system-objects": true,
 			"read-only": false,
 			"configuration": {
-				"host": "localhost",
+				"host": "192.168.100.100",
 				"port": "13306",
 				"database": "demo01",
-				"url": "jdbc:mysql://localhost:13306/demo01",
-				"home": "MySQL Binaries",
-				"type": "dev",
-				"auth-model": "native"
-			}
-		},
-		"mysql5-1747191c18b-c2ba75f060b449b": {
-			"provider": "mysql",
-			"driver": "mysql5",
-			"name": "demo01 2",
-			"save-password": true,
-			"navigator-show-only-entities": true,
-			"navigator-hide-folders": true,
-			"navigator-hide-virtual": true,
-			"read-only": false,
-			"configuration": {
-				"host": "localhost",
-				"port": "13306",
-				"database": "demo01",
-				"url": "jdbc:mysql://localhost:13306/demo01",
+				"url": "jdbc:mysql://192.168.100.100:13306/demo01",
 				"home": "MySQL Binaries",
 				"type": "dev",
 				"auth-model": "native",
 				"handlers": {}
+			},
+			"custom-properties": {
+				"database.meta.separate.connection": "false"
 			}
 		}
 	},

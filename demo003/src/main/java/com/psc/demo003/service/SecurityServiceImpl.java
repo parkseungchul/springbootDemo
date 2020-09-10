@@ -14,7 +14,6 @@ import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
-
 @Service
 public class SecurityServiceImpl implements SecurityService{
 
