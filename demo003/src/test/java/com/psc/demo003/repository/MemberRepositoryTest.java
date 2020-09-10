@@ -35,7 +35,8 @@ public class MemberRepositoryTest {
 		
 		Member member = new Member();
 		member.setId("member");
-		member.setName("멤버");
+		member.setName("멤버이름");
+		member.setDname("멤버부서");
 		member.setPassword(passwordEncoder.encode("member"));
 		member.setRole(Role.ROLE_MEMBER);
 		member.setEnabled(true);
@@ -43,7 +44,8 @@ public class MemberRepositoryTest {
 		
 		member = new Member();
 		member.setId("manager");
-		member.setName("매니저");
+		member.setName("매니저이름");
+		member.setDname("매니저부서");
 		member.setPassword(passwordEncoder.encode("manager"));
 		member.setRole(Role.ROLE_MANAGER);
 		member.setEnabled(true);
@@ -51,7 +53,8 @@ public class MemberRepositoryTest {
 		
 		member = new Member();
 		member.setId("admin");
-		member.setName("어드민");
+		member.setName("어드민이름");
+		member.setDname("어드민부서");
 		member.setPassword(passwordEncoder.encode("admin"));
 		member.setRole(Role.ROLE_ADMIN);
 		member.setEnabled(true);
