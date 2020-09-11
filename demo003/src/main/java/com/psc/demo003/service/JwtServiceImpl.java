@@ -10,12 +10,16 @@ import javax.xml.bind.DatatypeConverter;
 import org.springframework.stereotype.Service;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
-public class SecurityServiceImpl implements SecurityService{
+public class JwtServiceImpl implements JwtService{
 
 	private static final String secretKey = "rngkfktkfkdgkqslek";
 	@Override
@@ -45,5 +49,12 @@ public class SecurityServiceImpl implements SecurityService{
 				.getBody();
 		return claims.getSubject();
 	}
+	
+	
+    @Override
+    public void isUsable(String jwt) throws Exception{
+            Jws<Claims> claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(jwt);
+            log.debug(claims.toString());
+    }
 
 }

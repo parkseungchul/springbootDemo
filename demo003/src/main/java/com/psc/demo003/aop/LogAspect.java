@@ -13,9 +13,18 @@ import lombok.extern.slf4j.Slf4j;
 public class LogAspect {
 	
 	@Around("execution(* com.psc.demo003.service..*(..))")
-	public Object logging(ProceedingJoinPoint pjp) throws Throwable {
-		log.info(pjp.getSignature().getDeclaringTypeName());
+	public Object service(ProceedingJoinPoint pjp) throws Throwable {
+		log.info("========== Service ========== " + pjp.getSignature().getDeclaringTypeName());
 		
+		Object result = pjp.proceed();
+		
+		return result;
+	}
+	
+	@Around("execution(* com.psc.demo003.controller..*(..))")
+	public Object controller(ProceedingJoinPoint pjp) throws Throwable {
+		log.info("========== Controller ========== " + pjp.getSignature().getDeclaringTypeName());
+		log.info("========== Controller ========== " + pjp.getSignature().getDeclaringType());
 		Object result = pjp.proceed();
 		
 		return result;

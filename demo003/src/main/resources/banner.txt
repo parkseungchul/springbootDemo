@@ -13,4 +13,16 @@
 |       ||   |___ | ||_|| ||       ||       ||       | ___|   |                           
 |______| |_______||_|   |_||_______||_______||_______||_______|  
  
-                         
+ 1. Spring Security 적용
+
+CMD UTF-8
+ - chcp 65001 
+ 
+curl -i -d "username=admin&password=admin" -X POST http://localhost:8080/loginAction
+ 
+curl -X POST -H "Authorization: ${token}" http://localhost:8080/api/test    
+
+curl -X POST -H "Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTU5OTgxNjc4M30.0LUqCzDEn0JKZrCVg14bFQEjTtgwkhRz05obo8JtvFk" http://localhost:8080/api/test    
+
+
+                
