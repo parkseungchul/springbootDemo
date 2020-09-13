@@ -11,3 +11,7 @@ spring:
     url: jdbc:mysql://localhost:13306/demo03?useSSL=false&serverTimezone=Asia/Seoul
     username: user01
     password: user01
+  session:
+    store-type: REDIS
+  redis:    host: localhost
+    port: 6379

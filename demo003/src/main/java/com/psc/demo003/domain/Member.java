@@ -1,5 +1,7 @@
 package com.psc.demo003.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -15,7 +17,7 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name="tbl_member")
-public class Member {
+public class Member implements Serializable{
 	
 	@Id
 	private String id;
