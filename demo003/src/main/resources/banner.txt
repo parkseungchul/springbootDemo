@@ -27,13 +27,9 @@
     curl -X POST -H "Authorization: ${token}" http://localhost:8080/api/test    
   
 3. Redis 적용
-레디스 기동 - docker run --name my-redis -p 6379:6379 --network redis-net -d redis redis-server --appendonly yes
-레디스 접속 - docker run -it --network redis-net --rm redis redis-cli -h my-redis
 
-4. 스프링 레디스 설정 ( 세션 공유 확인 OK ) 
- - java -jar demo.jar --server.port==8080, java -jar demo.jar --server.port==8081 연결 이후
- - 로그인 테스트 8080로 하고 8081로 동작 하더라도 세션 유지함
- - 레디스가 이중화가 되어야 함!!!!
+4. 스프링 시큐리티  + 레디스 설정 OK
+
  
   
  

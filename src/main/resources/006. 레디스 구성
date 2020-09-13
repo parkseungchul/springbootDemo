@@ -1,0 +1,5 @@
+레디스 기동 
+- docker run --name my-redis -p 6379:6379 --network redis-net -d redis redis-server --appendonly yes
+
+레디스 접속
+ - docker run -it --network redis-net --rm redis redis-cli -h my-redis
