@@ -1,3 +1,5 @@
+MYSQL
+
 docker run -d -p 13306:3306 -v wp-db-vol:/docker/mysql/ -e MYSQL_ROOT_PASSWORD=password --name mysql5.7 mysql:5.7 --character-set-server=utf8 --collation-server=utf8_unicode_ci
 
 docker exec -it mysql5.7 bash
@@ -14,3 +16,29 @@ grant all privileges on demo02.* to 'user01'@'%';
 
 create schema demo03;
 grant all privileges on demo03.* to 'user01'@'%';
+
+
+ORACLE 
+
+docker run -d -p 11521:1521 --name ora11g parkseungchul/db:ora11g
+
+port: 1521
+sid: xe
+username: system
+password: oracle
+-bash-4.2# docker exec -it ora11g bash
+root@807b9a1a98be:/# sqlplus
+
+SQL*Plus: Release 11.2.0.2.0 Production on Tue May 7 12:45:32 2019
+
+Copyright (c) 1982, 2011, Oracle.  All rights reserved.
+
+Enter user-name: system                       
+Enter password: 
+
+Connected to:
+Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+
+SQL> create user user01 identified  by user01;
+
+SQL> grant connect, resource, dba to user01; 

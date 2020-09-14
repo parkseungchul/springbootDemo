@@ -2,6 +2,8 @@ package com.psc.demo003.repository;
 
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.psc.demo003.domain.City;
 import com.psc.demo003.domain.Member;
 import com.psc.demo003.domain.Role;
 
@@ -31,6 +34,7 @@ public class MemberRepositoryTest {
 	private PasswordEncoder passwordEncoder;
 	
 	@Test
+	@Transactional
 	public void A001_사용자_정보_삽입() {
 		
 		Member member = new Member();
@@ -71,5 +75,10 @@ public class MemberRepositoryTest {
 		}
 	}
 	
+	@Test
+	@Transactional
+	public void A003_사용자_정보_삭제() {
+		memberRepository.deleteAll();
+	}
 
 }
