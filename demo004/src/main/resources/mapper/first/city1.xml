@@ -1,0 +1,33 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.psc.demo004.mapper.first.CityMapper1">
+
+    <select id="selectCityById1" resultType="city">
+        select id
+              ,name
+              ,country
+              ,population
+          from city
+         where id = #{id}
+    </select>
+
+    <select id="selectAllCity1" resultType="city">
+        select id
+              ,name
+              ,country
+              ,population
+          from city
+    </select>
+
+    <insert id="insertCity1">
+      insert into city (id, name, country, population)
+      values (#{id}, #{name}, #{country}, #{population})
+    </insert>
+    
+    <delete id="deleteCity1">
+        delete from city
+    </delete>
+
+
+</mapper>

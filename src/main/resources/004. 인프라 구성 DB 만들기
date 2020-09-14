@@ -17,6 +17,9 @@ grant all privileges on demo02.* to 'user01'@'%';
 create schema demo03;
 grant all privileges on demo03.* to 'user01'@'%';
 
+create schema demo04;
+grant all privileges on demo04.* to 'user01'@'%';
+
 
 ORACLE 
 

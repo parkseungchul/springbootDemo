@@ -25,9 +25,16 @@ public class CityRepositoryTest {
 	@Autowired
 	CityRepository cityRepository;
 	
+	
+	@Test
+	public void A001_도시_정보_테이블_생성() {
+		cityRepository.count();
+	}
+	
+	
 	@Test
 	@Transactional
-	public void A001_도시_정보_삽입() {
+	public void A002_도시_정보_삽입() {
 		City city = new City();
 		
 		city = new City();
@@ -61,7 +68,7 @@ public class CityRepositoryTest {
 	
 	@Test
 	@Transactional
-	public void A002_도시_정보_삭제() {
+	public void A003_도시_정보_삭제() {
 		cityRepository.deleteAll();
 	}
 }

@@ -1,5 +1,10 @@
 package com.psc.demo004.mapper;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.transaction.Transactional;
+
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,7 +14,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.psc.demo004.mapper.first.CityMapper;
+import com.psc.demo004.mapper.first.CityMapper1;
+import com.psc.demo004.mapper.second.CityMapper2;
 import com.psc.demo004.model.City;
 
 import lombok.extern.slf4j.Slf4j;
@@ -21,17 +27,87 @@ import lombok.extern.slf4j.Slf4j;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CityTest {
 	
+	@Autowired
+	CityMapper1 cityMapper1;
 	
 	@Autowired
-	CityMapper cityMapper;
+	CityMapper2 cityMapper2;
 	
 	
 	@Test
-	public void A001_시티1_조회() {
-		cityMapper.selectAllCity().forEach(city ->{
-			log.info("================>"+city.toString());
+	@Transactional
+	public void A001_시티1_입력() {
+		List<City> cityList = new ArrayList<City>();
+		City city;
+		
+		city = new City(1L, "San Francisco", "US", 10000L);
+		cityList.add(city);
+		
+		city = new City(2L, "서울", "KR", 20000L);
+		cityList.add(city);
+		
+		city = new City(3L, "東京", "JP", 30000L);
+		cityList.add(city);
+		
+		city = new City(4L, "부산", "KR", 40000L);
+		cityList.add(city);
+		
+
+		for(City getCity: cityList) {
+			cityMapper1.insertCity1(getCity);
+		}
+
+	}
+	
+	@Test
+	public void A002_시티1_조회() {
+		cityMapper1.selectAllCity1().forEach(city -> {
+			log.info("================> " + city.toString());
 		});
 	}
 	
+	@Test
+	@Transactional
+	public void A003_시티1_삭제() {
+		cityMapper1.deleteCity1();
+	}
+	
+	@Test
+	@Transactional
+	public void A004_시티2_입력() {
+		List<City> cityList = new ArrayList<City>();
+		City city;
+		
+		city = new City(11L, "San Francisco", "US", 10000L);
+		cityList.add(city);
+		
+		city = new City(22L, "서울", "KR", 20000L);
+		cityList.add(city);
+		
+		city = new City(33L, "東京", "JP", 30000L);
+		cityList.add(city);
+		
+		city = new City(44L, "부산", "KR", 40000L);
+		cityList.add(city);
+		
+
+		for(City getCity: cityList) {
+			cityMapper2.insertCity2(getCity);
+		}
+
+	}
+	
+	@Test
+	public void A005_시티2_조회() {
+		cityMapper2.selectAllCity2().forEach(city -> {
+			log.info("================> " + city.toString());
+		});
+	}
+	
+	@Test
+	@Transactional
+	public void A006_시티2_삭제() {
+		cityMapper2.deleteCity2();
+	}
 
 }
