@@ -29,5 +29,4 @@
         delete from city
     </delete>
 
-
 </mapper>
