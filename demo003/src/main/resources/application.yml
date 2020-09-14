@@ -1,3 +1,5 @@
+server:
+  port: 8300
 spring:
   jpa:
     hibernate:

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>APP List</title>
+</head>
+<body>
+
+<table border="1">
+	<tr>
+		<td>Project Name</td>
+		<td>Content</td>
+		<td>TODO</td>
+	</tr>
+    
+	<tr>
+		<td>demo001</td>
+		<td>
+		    <ul>
+		    	<li>JAP MYSQL5.7 CRUD</li>
+		    	<li>JPA EMP, DEPT</li>
+		    	<li>JPA JUnit Test</li>
+		    	<li>logback.xml</li>
+		    </ul>
+		</td>
+		<td>
+			<ul>
+				<li>PK 두 개 이상인 테이블</li>
+				<li>LOB 타입 처리</li>
+				<li>날짜 처리</li>
+			</ul>
+		</td>
+	</tr>
+
+	<tr>
+		<td>demo002</td>
+		<td>
+		    <ul>
+		        <li>http://localhost:8200</li>
+		    	<li>Thymeleaf Base UI</li>
+		    	<li>Single, Multiple Layout</li>
+		    	<li>Spring Initialization</li>
+		    </ul>
+		</td>
+		<td>
+			<ul>
+				<li>화면에 세션 값 표현하기</li>
+			</ul>
+		</td>
+	</tr>
+
+	<tr>
+		<td>demo003</td>
+		<td>
+		    <ul>
+		        <li>http://localhost:8300</li>
+		    	<li>Spring Security (member/member, manager/manager, admin/admin)</li>
+		    	<li>JWT 적용 
+		    		<ul>
+		    			<li>curl -i -d "username=admin&password=admin" -X POST http://localhost:8080/loginAction</li>
+		    			<li>curl -X POST -H "Authorization: ${token}" http://localhost:8080/api/test </li>
+		    		</ul>
+				</li>
+				<li>redis 적용 --server.port=8300, 8301 로 실행 한 8300으로 로그인 한 이후 8301로 가더라도 세션이 유지 </li>
+		    </ul>
+		</td>
+		<td>
+			<ul>
+				<li>redis 이중화</li>
+			</ul>
+		</td>
+	</tr>
+
+
+</table>
+
+
+</body>
+</html>
