@@ -32,6 +32,6 @@ public class Dept2 {
 	private String dname;
 	private String loc;
 
-    @OneToMany(mappedBy = "dept", cascade  = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "dept", cascade  = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<Emp2> empList;
 }

@@ -12,6 +12,9 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy;
+import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
 @MapperScan(value = "com.psc.demo004.mapper.second", sqlSessionFactoryRef = "secondSqlSessionFactory")
@@ -21,12 +24,18 @@ public class SecondDataSourceConfiguration {
     public DataSource SecondDataSource() {
         return DataSourceBuilder.create().build();
     }
+    
+    @Bean(name = "dataSource2")
+    public DataSource dataSource2() {
+        return new LazyConnectionDataSourceProxy(SecondDataSource());
+    }
+    
 
     @Bean(name = "secondSqlSessionFactory")
-    public SqlSessionFactory secondSqlSessionFactory(@Qualifier("secondDataSource") DataSource secondDataSource,
+    public SqlSessionFactory secondSqlSessionFactory(@Qualifier("dataSource2") DataSource dataSource2,
                                                           ApplicationContext applicationContext) throws Exception {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
-        sqlSessionFactoryBean.setDataSource(secondDataSource);
+        sqlSessionFactoryBean.setDataSource(dataSource2);
         sqlSessionFactoryBean.setTypeAliasesPackage("com.psc.demo004.model");
         sqlSessionFactoryBean.setMapperLocations(applicationContext.getResources("classpath:mapper/second/**.xml"));
         return sqlSessionFactoryBean.getObject();
@@ -36,4 +45,9 @@ public class SecondDataSourceConfiguration {
     public SqlSessionTemplate secondSqlSessionTemplate(@Qualifier("secondSqlSessionFactory") SqlSessionFactory secondSqlSessionFactory) {
         return new SqlSessionTemplate(secondSqlSessionFactory);
     }
+    
+    @Bean(name = "txManager2")
+	public PlatformTransactionManager txManager2() throws Exception {
+		return new DataSourceTransactionManager(dataSource2());
+	}
 }

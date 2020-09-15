@@ -136,5 +136,19 @@ public class CityMapperTest {
 	public void B005_시티2_삭제() {
 		cityMapper2.deleteCity2();
 	}
+	
+	@Test
+	@Transactional
+	public void C001_트랜잭션_롤백() {
+		City city = new City(6L, "인천", "KR", 60000L);
+		cityMapper1.insertCity1(city);
+		
+		city = new City(44L, "부산", "KR", 40000L);
+		cityMapper2.insertCity2(city);
+		/**
+		 * 
+		 * https://supawer0728.github.io/2018/03/22/spring-multi-transaction/ 참고 수정 필요
+		 */
+	}
 
 }

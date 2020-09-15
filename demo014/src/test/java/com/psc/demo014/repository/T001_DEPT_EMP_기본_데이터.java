@@ -49,7 +49,7 @@ public class T001_DEPT_EMP_기본_데이터 {
 	
 
     @Test
-    @org.springframework.transaction.annotation.Transactional(rollbackFor = Exception.class)
+    @Transactional
     public void A001_DB1_EMP_DEPT_전체삭제() {
     	empRepository1.deleteAll();
     	deptRepository1.deleteAll();
@@ -57,6 +57,7 @@ public class T001_DEPT_EMP_기본_데이터 {
 	
 	
 	@Test
+	@Transactional
 	public void A002_DB1_DEPT_EPM_전체삽입(){
 
 		List<Dept1> deptList = new ArrayList<Dept1>();
@@ -90,6 +91,7 @@ public class T001_DEPT_EMP_기본_데이터 {
 	}
 
     @Test
+	@Transactional
     public void B001_DB2_EMP_DEPT_전체삭제() {
     	empRepository2.deleteAll();
     	deptRepository2.deleteAll();
@@ -97,6 +99,7 @@ public class T001_DEPT_EMP_기본_데이터 {
 	
 	
 	@Test
+	@Transactional
 	public void B002_DB2_DEPT_EPM_전체삽입(){
 
 		List<Dept2> deptList = new ArrayList<Dept2>();
@@ -129,6 +132,20 @@ public class T001_DEPT_EMP_기본_데이터 {
 
 	}
 	
+	@Test
+	@Transactional
+	public void C001_트랜잰션_테스트_롤백() {
+		Dept1 dept40 = new Dept1(50, "BBBB", "BBBB"  );
+		deptRepository1.save(dept40);
+		deptRepository2.deleteAll();
+	}
+	
+	@Test
+	public void C002_트랜잰션_테스트_롤백_안됨() {
+		Dept1 dept40 = new Dept1(50, "CCCC", "CCCC"  );
+		deptRepository1.save(dept40);
+		deptRepository2.deleteAll();
+	}
 
 	
 	public Timestamp getTimestamp(String timeStamp){
