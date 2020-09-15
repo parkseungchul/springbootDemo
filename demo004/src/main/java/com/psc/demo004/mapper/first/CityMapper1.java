@@ -14,4 +14,8 @@ public interface CityMapper1 {
     void insertCity1(City city);
     
     void deleteCity1();
+    
+    void createCity1();
+    
+    void dropCity1();
 }

@@ -11,10 +11,10 @@
 			"navigator-hide-virtual": true,
 			"read-only": false,
 			"configuration": {
-				"host": "localhost",
+				"host": "10.8.180.139",
 				"port": "13306",
 				"database": "demo03",
-				"url": "jdbc:mysql://localhost:13306/demo03",
+				"url": "jdbc:mysql://10.8.180.139:13306/demo03",
 				"home": "MySQL Binaries",
 				"type": "dev",
 				"auth-model": "native",
@@ -22,6 +22,23 @@
 			},
 			"custom-properties": {
 				"database.meta.separate.connection": "false"
+			}
+		},
+		"mysql5-1748d2f52ae-7d9f2559dec418ad": {
+			"provider": "mysql",
+			"driver": "mysql5",
+			"name": "demo04",
+			"save-password": true,
+			"show-system-objects": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "13306",
+				"database": "demo04",
+				"url": "jdbc:mysql://localhost:13306/demo04",
+				"home": "MySQL Binaries",
+				"type": "dev",
+				"auth-model": "native"
 			}
 		}
 	},

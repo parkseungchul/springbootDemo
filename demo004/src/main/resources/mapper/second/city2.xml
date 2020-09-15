@@ -29,4 +29,17 @@
         delete from city
     </delete>
 
+    <update id="createCity2">
+      create table city (
+        id bigint(20) not null,
+        country varchar(255) collate utf8_unicode_ci default null,
+        name varchar(255) collate utf8_unicode_ci default null,
+        population bigint(20) default null,
+        primary key (id)
+    ) engine=innodb default charset=utf8 collate=utf8_unicode_ci    
+    </update>
+
+    <update id="dropCity2">
+      drop table city 
+    </update>
 </mapper>

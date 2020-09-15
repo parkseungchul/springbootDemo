@@ -25,7 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 @Commit
 @SpringBootTest
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class CityTest {
+public class CityMapperTest {
 	
 	@Autowired
 	CityMapper1 cityMapper1;
@@ -33,10 +33,22 @@ public class CityTest {
 	@Autowired
 	CityMapper2 cityMapper2;
 	
+	@Test
+	@Transactional
+	public void A001_시티1_테이블_삭제() {
+		cityMapper1.dropCity1();
+	}
 	
 	@Test
 	@Transactional
-	public void A001_시티1_입력() {
+	public void A002_시티1_테이블_생성() {
+		cityMapper1.createCity1();
+	}
+	
+	
+	@Test
+	@Transactional
+	public void A003_시티1_입력() {
 		List<City> cityList = new ArrayList<City>();
 		City city;
 		
@@ -60,7 +72,7 @@ public class CityTest {
 	}
 	
 	@Test
-	public void A002_시티1_조회() {
+	public void A004_시티1_조회() {
 		cityMapper1.selectAllCity1().forEach(city -> {
 			log.info("================> " + city.toString());
 		});
@@ -68,13 +80,28 @@ public class CityTest {
 	
 	@Test
 	@Transactional
-	public void A003_시티1_삭제() {
+	public void A005_시티1_삭제() {
 		cityMapper1.deleteCity1();
+	}
+	
+	
+	
+	@Test
+	@Transactional
+	public void B001_시티2_테이블_삭제() {
+		cityMapper2.dropCity2();
 	}
 	
 	@Test
 	@Transactional
-	public void A004_시티2_입력() {
+	public void B002_시티2_테이블_생성() {
+		cityMapper2.createCity2();
+	}
+	
+	
+	@Test
+	@Transactional
+	public void B003_시티2_입력() {
 		List<City> cityList = new ArrayList<City>();
 		City city;
 		
@@ -98,7 +125,7 @@ public class CityTest {
 	}
 	
 	@Test
-	public void A005_시티2_조회() {
+	public void B004_시티2_조회() {
 		cityMapper2.selectAllCity2().forEach(city -> {
 			log.info("================> " + city.toString());
 		});
@@ -106,7 +133,7 @@ public class CityTest {
 	
 	@Test
 	@Transactional
-	public void A006_시티2_삭제() {
+	public void B005_시티2_삭제() {
 		cityMapper2.deleteCity2();
 	}
 
