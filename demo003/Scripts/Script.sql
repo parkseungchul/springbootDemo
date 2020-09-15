@@ -1,1 +1,1 @@
-drop table demo04.city 
+drop table tbl_dept

@@ -1,12 +1,9 @@
 package com.psc.demo001.repository;
 
 import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.jdo.annotations.Transactional;
@@ -41,7 +38,7 @@ public class T001_DEPT_EMP_기본_데이터 {
 
     @Test
     @Transactional
-    public void a001_EMP_DEPT_전체삭제() {
+    public void A001_EMP_DEPT_전체삭제() {
     	empRepository.deleteAll();
     	deptRepository.deleteAll();
     }
@@ -49,7 +46,7 @@ public class T001_DEPT_EMP_기본_데이터 {
 	
 	@Test
 	@Transactional
-	public void a002_DEPT_EPM_전체삽입(){
+	public void A002_DEPT_EPM_전체삽입(){
 
 		List<Dept> deptList = new ArrayList<Dept>();
 		Dept dept10 = new Dept(10, "ACCOUNTING", "NEW YORK"); deptList.add(dept10);
