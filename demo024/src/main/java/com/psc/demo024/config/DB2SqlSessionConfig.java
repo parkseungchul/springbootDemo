@@ -1,4 +1,4 @@
-package com.psc.demo004.config;
+package com.psc.demo024.config;
 
 import javax.sql.DataSource;
 
@@ -8,37 +8,39 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy;
 import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@MapperScan(value = "com.psc.demo004.mapper.second", sqlSessionFactoryRef = "secondSqlSessionFactory")
-public class SecondDataSourceConfiguration {
+@MapperScan(value = "com.psc.demo024.mapper.second")
+public class DB2SqlSessionConfig {
+
+	
     @Bean(name = "secondDataSource")
-    @ConfigurationProperties(prefix="spring.second.datasource")
-    public DataSource SecondDataSource() {
+    @ConfigurationProperties(prefix = "spring.second.datasource")
+    public DataSource secondDataSource() {
         return DataSourceBuilder.create().build();
     }
     
+
     @Bean(name = "dataSource2")
     public DataSource dataSource2() {
-        return new LazyConnectionDataSourceProxy(SecondDataSource());
+        return new LazyConnectionDataSourceProxy(secondDataSource());
     }
-    
 
     @Bean(name = "secondSqlSessionFactory")
     public SqlSessionFactory secondSqlSessionFactory(@Qualifier("dataSource2") DataSource dataSource2,
                                                           ApplicationContext applicationContext) throws Exception {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource2);
-        sqlSessionFactoryBean.setTypeAliasesPackage("com.psc.demo004.model");
+        sqlSessionFactoryBean.setTypeAliasesPackage("com.psc.demo024.model");
         sqlSessionFactoryBean.setMapperLocations(applicationContext.getResources("classpath:mapper/second/**.xml"));
         return sqlSessionFactoryBean.getObject();
     }

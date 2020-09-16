@@ -1,9 +1,7 @@
-package com.psc.demo004.mapper;
+package com.psc.demo024.mapper;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.transaction.Transactional;
 
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -13,10 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.psc.demo004.mapper.first.CityMapper1;
-import com.psc.demo004.mapper.second.CityMapper2;
-import com.psc.demo004.model.City;
+import com.psc.demo024.mapper.first.CityMapper1;
+import com.psc.demo024.mapper.second.CityMapper2;
+import com.psc.demo024.model.City;
+import com.psc.demo024.service.CityService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -33,6 +33,9 @@ public class CityMapperTest {
 	@Autowired
 	CityMapper2 cityMapper2;
 	
+	@Autowired
+	CityService cityService;
+	
 	@Test
 	@Transactional
 	public void A001_시티1_테이블_삭제() throws Exception {
@@ -44,7 +47,6 @@ public class CityMapperTest {
 	public void A002_시티1_테이블_생성() throws Exception {
 		cityMapper1.createCity1();
 	}
-	
 	
 	@Test
 	@Transactional
@@ -138,17 +140,13 @@ public class CityMapperTest {
 	}
 	
 	@Test
-	@Transactional
 	public void C001_트랜잭션_롤백()  throws Exception{
-		City city = new City(1114L, "인천", "KR", 60000L);
-		cityMapper1.insertCity1(city);
-		
-		city = new City(44L, "부산", "KR", 40000L);
-		cityMapper2.insertCity2(city);
-		/**
-		 * 
-		 * https://supawer0728.github.io/2018/03/22/spring-multi-transaction/ 참고 수정 필요
-		 */
+		cityService.cityRollBackY();
+	}
+	
+	@Test
+	public void C002_트랜잭션_롤백_안함()  throws Exception{
+		cityService.cityRollBackN();
 	}
 
 }

@@ -49,16 +49,8 @@ public class T001_DEPT_EMP_기본_데이터 {
 	
 
     @Test
-    @Transactional
-    public void A001_DB1_EMP_DEPT_전체삭제() {
-    	empRepository1.deleteAll();
-    	deptRepository1.deleteAll();
-    }
-	
-	
-	@Test
 	@Transactional
-	public void A002_DB1_DEPT_EPM_전체삽입(){
+	public void A001_DB1_DEPT_EPM_전체삽입(){
 
 		List<Dept1> deptList = new ArrayList<Dept1>();
 		Dept1 dept10 = new Dept1(10, "ACCOUNTING", "NEW YORK"); deptList.add(dept10);
@@ -89,18 +81,17 @@ public class T001_DEPT_EMP_기본_데이터 {
 		empRepository1.saveAll(empList);
 
 	}
-
+    
     @Test
 	@Transactional
-    public void B001_DB2_EMP_DEPT_전체삭제() {
-    	empRepository2.deleteAll();
-    	deptRepository2.deleteAll();
+    public void A002_DB1_EMP_DEPT_전체삭제() {
+    	empRepository1.deleteAll();
+    	deptRepository1.deleteAll();
     }
-	
-	
+    
 	@Test
 	@Transactional
-	public void B002_DB2_DEPT_EPM_전체삽입(){
+	public void B001_DB2_DEPT_EPM_전체삽입(){
 
 		List<Dept2> deptList = new ArrayList<Dept2>();
 		Dept2 dept10 = new Dept2(10, "ACCOUNTING", "NEW YORK"); deptList.add(dept10);
@@ -129,8 +120,14 @@ public class T001_DEPT_EMP_기본_데이터 {
 		emp = new Emp2(7900, "JAMES" , "CLERK"    , 7698, getTimestamp("1981-03-12 00:00:00.000"),  950, null, 30); empList.add(emp);
 		emp = new Emp2(7934, "MILLER", "CLERK"    , 7782, getTimestamp("1982-01-23 00:00:00.000"), 1300, null, 10); empList.add(emp);
 		empRepository2.saveAll(empList);
-
 	}
+	
+    @Test
+	@Transactional
+    public void B002_DB2_EMP_DEPT_전체삭제() {
+    	empRepository2.deleteAll();
+    	deptRepository2.deleteAll();
+    }
 	
 	@Test
 	@Transactional

@@ -12,10 +12,12 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @MapperScan(value = "com.psc.demo004.mapper.first", sqlSessionFactoryRef = "firstSqlSessionFactory")
@@ -50,8 +52,9 @@ public class FirstDataSourceConfiguration {
          return new SqlSessionTemplate(firstSqlSessionFactory);
      }
      
-    @Bean(name = "txManager1")
- 	public PlatformTransactionManager txManager1() throws Exception {
- 		return new DataSourceTransactionManager(dataSource1());
- 	}
+    @Bean
+    public PlatformTransactionManager txManager1(DataSource dataSource1) {
+        return new DataSourceTransactionManager(dataSource1);
+    }
+    
 }

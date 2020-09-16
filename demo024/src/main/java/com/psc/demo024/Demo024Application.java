@@ -1,0 +1,13 @@
+package com.psc.demo024;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class Demo024Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(Demo024Application.class, args);
+	}
+
+}
