@@ -24,8 +24,8 @@
       insert into city (id, name, country, population)
       values (#{id}, #{name}, #{country}, #{population})
     </insert>
-
-    <delete id="deleteCity2">
+    
+    <delete id="deleteCity1">
         delete from city
     </delete>
 
@@ -42,4 +42,7 @@
     <update id="dropCity2">
       drop table city 
     </update>
+    
+    
+
 </mapper>

@@ -20,7 +20,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 @Configuration
 @MapperScan(value = "com.psc.demo004.mapper.first", sqlSessionFactoryRef = "firstSqlSessionFactory")
 public class FirstDataSourceConfiguration {
-     @Primary    
+	
      @Bean(name = "firstDataSource")
      @ConfigurationProperties(prefix = "spring.first.datasource")
      public DataSource firstDataSource() {
@@ -33,7 +33,7 @@ public class FirstDataSourceConfiguration {
          return new LazyConnectionDataSourceProxy(firstDataSource());
      }
 
-     @Primary
+
      @Bean(name = "firstSqlSessionFactory")
      public SqlSessionFactory firstSqlSessionFactory(@Qualifier("dataSource1") DataSource dataSource1,
                                  ApplicationContext applicationContext) throws Exception {
@@ -49,7 +49,7 @@ public class FirstDataSourceConfiguration {
      public SqlSessionTemplate firstSqlSessionTemplate(@Qualifier("firstSqlSessionFactory") SqlSessionFactory firstSqlSessionFactory) {
          return new SqlSessionTemplate(firstSqlSessionFactory);
      }
-     
+      
     @Bean
     public PlatformTransactionManager txManager1(DataSource dataSource1) {
         return new DataSourceTransactionManager(dataSource1);

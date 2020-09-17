@@ -21,6 +21,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 @MapperScan(value = "com.psc.demo024.mapper.first")
 public class DB1SqlSessionConfig {
  
+	@Primary
     @Bean(name = "firstDataSource")
     @ConfigurationProperties(prefix = "spring.first.datasource")
     public DataSource firstDataSource() {

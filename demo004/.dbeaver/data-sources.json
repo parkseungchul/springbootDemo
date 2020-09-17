@@ -43,13 +43,16 @@
 			"navigator-hide-virtual": true,
 			"read-only": false,
 			"configuration": {
-				"host": "10.8.180.139",
+				"host": "localhost",
 				"port": "13306",
-				"url": "jdbc:mysql://10.8.180.139:13306/",
+				"url": "jdbc:mysql://localhost:13306/",
 				"home": "MySQL Binaries",
 				"type": "dev",
 				"auth-model": "native",
 				"handlers": {}
+			},
+			"custom-properties": {
+				"database.meta.separate.connection": "false"
 			}
 		}
 	},

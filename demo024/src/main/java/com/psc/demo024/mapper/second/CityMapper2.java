@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.psc.demo024.model.City;
+
 @Mapper
 public interface CityMapper2 {
     City selectCityById2(Long id)  throws Exception;;
