@@ -6,8 +6,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.transaction.Transactional;
-
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.psc.demo014.db1.domain.Dept1;
 import com.psc.demo014.db1.domain.Emp1;
@@ -25,6 +26,7 @@ import com.psc.demo014.db2.domain.Dept2;
 import com.psc.demo014.db2.domain.Emp2;
 import com.psc.demo014.db2.repository.DeptRepository2;
 import com.psc.demo014.db2.repository.EmpRepository2;
+import com.psc.demo014.service.DeptService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -33,7 +35,7 @@ import lombok.extern.slf4j.Slf4j;
 @Commit
 @SpringBootTest
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class T001_DEPT_EMP_기본_데이터 {
+public class T001_DEPT_EMP_트랜잭션_테스트 {
 	
 	@Autowired
 	EmpRepository1 empRepository1;
@@ -47,6 +49,17 @@ public class T001_DEPT_EMP_기본_데이터 {
 	@Autowired
 	DeptRepository2 deptRepository2;
 	
+	
+	@Autowired
+	DeptService deptService;
+	
+	@Before
+	@Transactional
+	public void deleteDept50() {
+		if(deptRepository1.findById(50).isPresent()) {
+			deptRepository1.deleteById(50);
+		}
+	}
 
     @Test
 	@Transactional
@@ -129,19 +142,25 @@ public class T001_DEPT_EMP_기본_데이터 {
     	deptRepository2.deleteAll();
     }
 	
+	/**
+	 * 데이터가 롤백이 되므로 50 인서트 되면 안됨!!
+	 */
 	@Test
-	@Transactional
 	public void C001_트랜잰션_테스트_롤백() {
-		Dept1 dept40 = new Dept1(50, "BBBB", "BBBB"  );
-		deptRepository1.save(dept40);
-		deptRepository2.deleteAll();
+		try {
+			deptService.transcationXATest();
+			
+		}catch(Exception e) {
+			
+		}
+		
+		Assert.assertTrue(!deptRepository1.findById(50).isPresent());
 	}
 	
 	@Test
 	public void C002_트랜잰션_테스트_롤백_안됨() {
-		Dept1 dept40 = new Dept1(50, "CCCC", "CCCC"  );
-		deptRepository1.save(dept40);
-		deptRepository2.deleteAll();
+		 deptService.transcationNonXATest();
+		 Assert.assertTrue(deptRepository1.findById(50).isPresent());
 	}
 
 	
