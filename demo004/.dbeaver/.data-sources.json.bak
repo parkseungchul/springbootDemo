@@ -11,10 +11,10 @@
 			"navigator-hide-virtual": true,
 			"read-only": false,
 			"configuration": {
-				"host": "localhost",
+				"host": "10.8.180.139",
 				"port": "11521",
 				"database": "XE",
-				"url": "jdbc:oracle:thin:@//localhost:11521/XE",
+				"url": "jdbc:oracle:thin:@//10.8.180.139:11521/XE",
 				"type": "dev",
 				"provider-properties": {
 					"@dbeaver-connection-type@": "BASIC",
@@ -29,6 +29,9 @@
 				},
 				"auth-model": "oracle_native",
 				"handlers": {}
+			},
+			"custom-properties": {
+				"database.meta.separate.connection": "false"
 			}
 		}
 	},

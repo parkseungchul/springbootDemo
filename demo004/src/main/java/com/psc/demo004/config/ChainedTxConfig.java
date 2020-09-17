@@ -16,14 +16,18 @@ public class ChainedTxConfig {
  
     @Primary
 	@Bean
-    public PlatformTransactionManager transactionManager(PlatformTransactionManager txManager1, PlatformTransactionManager txManager2) {
+    public PlatformTransactionManager transactionManager(
+    		PlatformTransactionManager txManager1 ,
+    		PlatformTransactionManager txManager2 ,
+    		PlatformTransactionManager txManager3 ) {
     	
     	log.info("=======================================================");
     	log.info(txManager1.toString());
     	log.info(txManager2.toString());
+    	log.info(txManager3.toString());
     	log.info("=======================================================");
     	
-        return new ChainedTransactionManager(txManager1, txManager2);
+        return new ChainedTransactionManager(txManager1, txManager2, txManager3);
     }
 }
 
