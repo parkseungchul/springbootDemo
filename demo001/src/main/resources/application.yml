@@ -10,7 +10,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
   datasource:
-    url: jdbc:mysql://localhost:13306/demo01?useSSL=false&serverTimezone=Asia/Seoul
+    url: jdbc:mysql://10.8.180.139:13306/demo01?useSSL=false&serverTimezone=Asia/Seoul
     username: user01
     password: user01
 
