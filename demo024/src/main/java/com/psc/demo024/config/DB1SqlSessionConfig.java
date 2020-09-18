@@ -1,5 +1,6 @@
 package com.psc.demo024.config;
 
+import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -15,45 +16,65 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
-@MapperScan(value = "com.psc.demo024.mapper.first")
+@MapperScan(value = "com.psc.demo024.mapper.first", sqlSessionFactoryRef = "db1SqlSessionFactory")
 public class DB1SqlSessionConfig {
- 
-	@Primary
-    @Bean(name = "firstDataSource")
-    @ConfigurationProperties(prefix = "spring.first.datasource")
-    public DataSource firstDataSource() {
-        return DataSourceBuilder.create().build();
+	
+     @Bean(name = "orgDataSource1")
+     @ConfigurationProperties(prefix = "spring.db1.datasource")
+     public DataSource orgDataSource1() {
+         return DataSourceBuilder.create().build();
+     }
+     
+
+     @Bean(name = "dataSource1")
+     public DataSource dataSource1() {
+         return new LazyConnectionDataSourceProxy(orgDataSource1());
+     }
+
+
+     @Bean(name = "db1SqlSessionFactory")
+     public SqlSessionFactory db1SqlSessionFactory(@Qualifier("dataSource1") DataSource dataSource1,
+                                 ApplicationContext applicationContext) throws Exception {
+            SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
+            sqlSessionFactoryBean.setDataSource(dataSource1);
+            sqlSessionFactoryBean.setTypeAliasesPackage("com.psc.demo024.model");
+            sqlSessionFactoryBean.setMapperLocations(applicationContext.getResources("classpath:mapper/db1/**.xml"));
+            return sqlSessionFactoryBean.getObject();
+     }
+
+     @Primary
+     @Bean(name = "db1SessionTemplate")
+     public SqlSessionTemplate db1SessionTemplate(@Qualifier("db1SqlSessionFactory") SqlSessionFactory db1SqlSessionFactory) {
+         return new SqlSessionTemplate(db1SqlSessionFactory);
+     }
+     
+     @Bean(name = "entityManagerFactory1")
+     public EntityManagerFactory entityManagerFactory1() {
+         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
+         entityManagerFactoryBean.setDataSource(this.dataSource1());
+         //entityManagerFactoryBean.setPersistenceUnitName("demo024");
+         entityManagerFactoryBean.setPersistenceXmlLocation("classpath:/mapper/persistence1.xml");
+         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
+         entityManagerFactoryBean.afterPropertiesSet();
+         return entityManagerFactoryBean.getObject();
+     }
+      
+     @Bean
+     public JpaTransactionManager txManager1(EntityManagerFactory entityManagerFactory1) {
+         return new JpaTransactionManager(entityManagerFactory1);
+     }
+      
+    /** 
+    @Bean
+    public PlatformTransactionManager txManager1(DataSource dataSource1) {
+        return new DataSourceTransactionManager(dataSource1);
     }
+    **/
     
-
-    @Bean(name = "dataSource1")
-    public DataSource dataSource1() {
-        return new LazyConnectionDataSourceProxy(firstDataSource());
-    }
-
-    @Primary
-    @Bean(name = "firstSqlSessionFactory")
-    public SqlSessionFactory firstSqlSessionFactory(@Qualifier("dataSource1") DataSource dataSource1,
-                                ApplicationContext applicationContext) throws Exception {
-           SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
-           sqlSessionFactoryBean.setDataSource(dataSource1);
-           sqlSessionFactoryBean.setTypeAliasesPackage("com.psc.demo024.model");
-           sqlSessionFactoryBean.setMapperLocations(applicationContext.getResources("classpath:mapper/first/**.xml"));
-           return sqlSessionFactoryBean.getObject();
-    }
-
-    @Primary
-    @Bean(name = "firstSessionTemplate")
-    public SqlSessionTemplate firstSqlSessionTemplate(@Qualifier("firstSqlSessionFactory") SqlSessionFactory firstSqlSessionFactory) {
-        return new SqlSessionTemplate(firstSqlSessionFactory);
-    }
-    
-   @Bean
-   public PlatformTransactionManager txManager1(DataSource dataSource1) {
-       return new DataSourceTransactionManager(dataSource1);
-   }
-
 }

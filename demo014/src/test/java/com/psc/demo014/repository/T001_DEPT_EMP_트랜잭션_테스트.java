@@ -56,6 +56,10 @@ public class T001_DEPT_EMP_트랜잭션_테스트 {
 	@Before
 	@Transactional
 	public void deleteDept50() {
+		
+		A001_DB1_DEPT_EPM_전체삽입();
+		B001_DB2_DEPT_EPM_전체삽입();
+		
 		if(deptRepository1.findById(50).isPresent()) {
 			deptRepository1.deleteById(50);
 		}
@@ -159,7 +163,12 @@ public class T001_DEPT_EMP_트랜잭션_테스트 {
 	
 	@Test
 	public void C002_트랜잰션_테스트_롤백_안됨() {
-		 deptService.transcationNonXATest();
+		 try {
+			 deptService.transcationNonXATest();
+		 }catch(Exception e) {
+			 
+		 }
+		 
 		 Assert.assertTrue(deptRepository1.findById(50).isPresent());
 	}
 

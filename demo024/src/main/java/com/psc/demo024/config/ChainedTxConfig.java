@@ -1,6 +1,5 @@
 package com.psc.demo024.config;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -13,14 +12,20 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ChainedTxConfig {
 
-    @Bean
     @Primary
-    public PlatformTransactionManager transactionManager(@Qualifier("txManager1") PlatformTransactionManager txManager1, @Qualifier("txManager2") PlatformTransactionManager txManager2) {
-        
-    	log.info("===============================");
+	@Bean
+    public PlatformTransactionManager transactionManager(
+    		PlatformTransactionManager txManager1 ,
+    		PlatformTransactionManager txManager2 ,
+    		PlatformTransactionManager txManager3
+    		) {
+    	
+    	log.info("=======================================================");
     	log.info(txManager1.toString());
     	log.info(txManager2.toString());
-    	log.info("===============================");
-    	return new ChainedTransactionManager(txManager1, txManager2);
+    	log.info(txManager3.toString());
+    	log.info("=======================================================");
+    	
+        return new ChainedTransactionManager(txManager1, txManager2, txManager3);
     }
 }

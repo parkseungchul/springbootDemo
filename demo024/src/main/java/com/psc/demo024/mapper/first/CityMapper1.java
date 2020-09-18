@@ -10,13 +10,13 @@ import com.psc.demo024.model.City;
 public interface CityMapper1 {
     City selectCityById1(Long id) throws Exception;
     
-    List<City> selectAllCity1()  throws Exception;;
+    List<City> selectAllCity1();
     
-    void insertCity1(City city)  throws Exception;;
+    void insertCity1(City city);
     
-    void deleteCity1()  throws Exception;;
+    void deleteCity1();
     
-    void createCity1()  throws Exception;;
+    void createCity1()  throws Exception;
     
-    void dropCity1()  throws Exception;;
+    void dropCity1()  throws Exception;
 }

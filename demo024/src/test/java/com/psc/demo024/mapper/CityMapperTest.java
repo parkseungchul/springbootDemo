@@ -3,6 +3,8 @@ package com.psc.demo024.mapper;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,6 +37,9 @@ public class CityMapperTest {
 	
 	@Autowired
 	CityService cityService;
+	
+	
+
 	
 	@Test
 	@Transactional
@@ -82,7 +87,7 @@ public class CityMapperTest {
 	
 	@Test
 	@Transactional
-	public void A005_시티1_삭제() throws Exception {
+	public void A005_시티1_데이터_삭제() throws Exception {
 		cityMapper1.deleteCity1();
 	}
 	
@@ -135,18 +140,13 @@ public class CityMapperTest {
 	
 	@Test
 	@Transactional
-	public void B005_시티2_삭제()  throws Exception{
+	public void B005_시티2_데이터_삭제()  throws Exception{
 		cityMapper2.deleteCity2();
 	}
 	
-	@Test
-	public void C001_트랜잭션_롤백()  throws Exception{
-		cityService.cityRollBackY();
-	}
 	
-	@Test
-	public void C002_트랜잭션_롤백_안함()  throws Exception{
-		cityService.cityRollBackN();
-	}
+	
+	
+
 
 }

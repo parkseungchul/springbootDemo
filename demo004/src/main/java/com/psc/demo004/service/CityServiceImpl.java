@@ -36,34 +36,32 @@ public class CityServiceImpl implements CityService {
 	@Override
 	@Transactional
 	public void transcationDB1RollBackY(){
-		firstDbInsert(new City(1L, "San Francisco", "US", 10000L));
-		firstDbInsert(new City(2L, "서울", "KR", 20000L));
-		firstDbInsert(new City(1L, "San Francisco", "US", 10000L));
+		cityMapper1.insertCity1(new City(1L, "San Francisco", "US", 10000L));
+		cityMapper1.insertCity1(new City(2L, "서울", "KR", 20000L));
+		cityMapper1.insertCity1(new City(1L, "San Francisco", "US", 10000L));
 		
 	}
 
 	@Override
 	public void transcationDB1RollBackN() throws Exception {
-		firstDbInsert(new City(1L, "San Francisco", "US", 10000L));
-		firstDbInsert(new City(2L, "서울", "KR", 20000L));
-		firstDbInsert(new City(1L, "San Francisco", "US", 10000L));
+		cityMapper1.insertCity1(new City(1L, "San Francisco", "US", 10000L));
+		cityMapper1.insertCity1(new City(2L, "서울", "KR", 20000L));
+		cityMapper1.insertCity1(new City(1L, "San Francisco", "US", 10000L));
 	}
 
 	@Override
 	@Transactional
 	public void transcationDB2RollBackY() throws Exception {
-		firstDbInsert(new City(1L, "San Francisco", "US", 10000L));
-		secondDbInsert(new City(2L, "서울", "KR", 20000L));
-		firstDbInsert(new City(1L, "San Francisco", "US", 10000L));
-		
+		cityMapper1.insertCity1(new City(1L, "San Francisco", "US", 10000L));
+		cityMapper2.insertCity2(new City(2L, "서울", "KR", 20000L));
+		cityMapper1.insertCity1(new City(1L, "San Francisco", "US", 10000L));
 	}
 
 	@Override
 	public void transcationDB2RollBackN() throws Exception {
-		firstDbInsert(new City(1L, "San Francisco", "US", 10000L));
-		secondDbInsert(new City(2L, "서울", "KR", 20000L));
-		firstDbInsert(new City(1L, "San Francisco", "US", 10000L));
-		
+		cityMapper1.insertCity1(new City(1L, "San Francisco", "US", 10000L));
+		cityMapper2.insertCity2(new City(2L, "서울", "KR", 20000L));
+		cityMapper1.insertCity1(new City(1L, "San Francisco", "US", 10000L));
 	}
 
 	@Override
