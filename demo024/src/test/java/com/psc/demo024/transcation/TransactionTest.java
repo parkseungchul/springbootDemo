@@ -14,11 +14,11 @@ import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.psc.demo024.db3.repository.CityRepository3;
 import com.psc.demo024.mapper.CityMapperTest;
 import com.psc.demo024.mapper.first.CityMapper1;
 import com.psc.demo024.mapper.second.CityMapper2;
 import com.psc.demo024.model.City;
-import com.psc.demo024.repository.CityRepository;
 import com.psc.demo024.service.CityService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -38,7 +38,7 @@ public class TransactionTest {
 	CityMapper2 cityMapper2;
 	
 	@Autowired
-	CityRepository cityRepository;
+	CityRepository3 cityRepository;
 	
 	@Autowired
 	CityService cityService;

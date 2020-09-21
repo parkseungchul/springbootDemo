@@ -1,4 +1,4 @@
-package com.psc.demo024.repository;
+package com.psc.demo024.db4.repository;
 
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
@@ -10,8 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.psc.demo024.domain.City;
-import com.psc.demo024.mapper.CityMapperTest;
+import com.psc.demo024.db4.domain.City4;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,15 +19,15 @@ import lombok.extern.slf4j.Slf4j;
 @Commit
 @SpringBootTest
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class CityRepositoryTest {
+public class CityRepository4Test {
 
 	@Autowired
-	CityRepository cityRepository;
+	CityRepository4 cityRepository;
 	
 	
 	@Test
 	public void A001_도시_데이터_삽입() {
-		City city = new City(1L, "San Francisco", "US", 10000L);
+		City4 city = new City4(1L, "San Francisco", "US", 10000L);
 		cityRepository.save(city);
 		Assert.assertTrue(cityRepository.findById(1L).isPresent());
 	}

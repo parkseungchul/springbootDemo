@@ -1,4 +1,4 @@
-package com.psc.demo024.domain;
+package com.psc.demo024.db3.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -15,8 +15,8 @@ import lombok.ToString;
 @Entity
 @Table(name="city")
 @AllArgsConstructor
-public class City {
-	public City() {}
+public class City3 {
+	public City3() {}
 	
 	@Id
 	private Long id;

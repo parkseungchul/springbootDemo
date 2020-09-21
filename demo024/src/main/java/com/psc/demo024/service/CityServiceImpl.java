@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.psc.demo024.db3.repository.CityRepository3;
 import com.psc.demo024.mapper.first.CityMapper1;
 import com.psc.demo024.mapper.second.CityMapper2;
 import com.psc.demo024.model.City;
-import com.psc.demo024.repository.CityRepository;
 
 @Service
 public class CityServiceImpl implements CityService{
@@ -21,7 +21,7 @@ public class CityServiceImpl implements CityService{
 	private CityMapper2 cityMapper2;
 	
 	@Autowired
-	private CityRepository CityRepository;
+	private CityRepository3 CityRepository;
 
 	@Override
 	public List<City> cityDb1List() {
@@ -80,7 +80,7 @@ public class CityServiceImpl implements CityService{
 	public void transcationDB3RollBackY() {
 		cityMapper1.insertCity1(new City(1L, "San Francisco", "US", 10000L));
 		cityMapper2.insertCity2(new City(2L, "서울", "KR", 20000L));
-		CityRepository.save(new com.psc.demo024.domain.City(1L, "San Francisco", "US", 10000L));
+		CityRepository.save(new com.psc.demo024.db3.domain.City3(1L, "San Francisco", "US", 10000L));
 		cityMapper1.insertCity1(new City(1L, "San Francisco", "US", 10000L));
 		
 	}
@@ -89,7 +89,7 @@ public class CityServiceImpl implements CityService{
 	public void transcationDB3RollBackN() {
 		cityMapper1.insertCity1(new City(1L, "San Francisco", "US", 10000L));
 		cityMapper2.insertCity2(new City(2L, "서울", "KR", 20000L));
-		CityRepository.save(new com.psc.demo024.domain.City(1L, "San Francisco", "US", 10000L));
+		CityRepository.save(new com.psc.demo024.db3.domain.City3(1L, "San Francisco", "US", 10000L));
 		cityMapper1.insertCity1(new City(1L, "San Francisco", "US", 10000L));
 		
 	}

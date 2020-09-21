@@ -20,51 +20,48 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
-@ConfigurationProperties(prefix = "spring.db3.datasource")
+@ConfigurationProperties(prefix = "spring.db4.datasource")
 @EnableJpaRepositories(
-        entityManagerFactoryRef = "entityManagerFactory3",
-        transactionManagerRef = "txManager3",
-        basePackages = {"com.psc.demo024.db3.repository"})
-public class DB3Config extends HikariConfig{
+        entityManagerFactoryRef = "entityManagerFactory4",
+        transactionManagerRef = "txManager4",
+        basePackages = {"com.psc.demo024.db4.repository"})
+public class DB4Config extends HikariConfig{
 
     @Bean
-    public DataSource dataSource3() {
+    public DataSource dataSource4() {
         return new LazyConnectionDataSourceProxy(new HikariDataSource(this));
     }
 
     @Bean
-    public EntityManagerFactory entityManagerFactory3() {
+    public EntityManagerFactory entityManagerFactory4() {
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
-        factory.setDataSource(this.dataSource3());
+        factory.setDataSource(this.dataSource4());
         factory.setJpaVendorAdapter(vendorAdapter);
         factory.setJpaPropertyMap(ImmutableMap.of(        	
-                "hibernate.hbm2ddl.auto", "update",
-                "hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect",
+                "hibernate.hbm2ddl.auto", "none",
+                "hibernate.dialect", "org.hibernate.dialect.OracleDialect",
                 "hibernate.show_sql", "true"
         ));
         
+        
+        
+
      
         //factory.setPersistenceUnitName("db3");
-        factory.setPackagesToScan("com.psc.demo024.db3.domain");
+        factory.setPackagesToScan("com.psc.demo024.db4.domain");
         factory.afterPropertiesSet();
 
         return factory.getObject();
     }
     
-    /**
-    @Bean
-    public PlatformTransactionManager txManager3(DataSource dataSource3) {
-        return new DataSourceTransactionManager(dataSource3);
-    }
-    **/
 
 
     @Bean
-    public PlatformTransactionManager txManager3() {
+    public PlatformTransactionManager txManager4() {
         JpaTransactionManager tm = new JpaTransactionManager();
-        tm.setEntityManagerFactory(entityManagerFactory3());
+        tm.setEntityManagerFactory(entityManagerFactory4());
         return tm;
     }
 

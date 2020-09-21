@@ -17,15 +17,17 @@ public class ChainedTxConfig {
     public PlatformTransactionManager transactionManager(
     		PlatformTransactionManager txManager1 ,
     		PlatformTransactionManager txManager2 ,
-    		PlatformTransactionManager txManager3
+    		PlatformTransactionManager txManager3 ,
+    		PlatformTransactionManager txManager4
     		) {
     	
     	log.info("=======================================================");
     	log.info(txManager1.toString());
     	log.info(txManager2.toString());
     	log.info(txManager3.toString());
+    	log.info(txManager4.toString());
     	log.info("=======================================================");
     	
-        return new ChainedTransactionManager(txManager1, txManager2, txManager3);
+        return new ChainedTransactionManager(txManager1, txManager2, txManager3, txManager4);
     }
 }
