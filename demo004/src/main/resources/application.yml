@@ -1,19 +1,13 @@
 spring:
   first:
     datasource:
-      jdbc-url: jdbc:mysql://10.8.180.139:13306/demo041?useSSL=false&serverTimezone=Asia/Seoul
-      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mariadb://192.168.100.100:13306/demo
+      driver-class-name: org.mariadb.jdbc.Driver
       username: user01
       password: user01
   second:
     datasource:
-      jdbc-url: jdbc:mysql://10.8.180.139:13306/demo042?useSSL=false&serverTimezone=Asia/Seoul
-      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mariadb://192.168.100.100:13306/demo2
+      driver-class-name: org.mariadb.jdbc.Driver
       username: user01
       password: user01
-  third:
-    datasource:
-      jdbc-url: jdbc:mysql://10.8.180.139:13306/demo043?useSSL=false&serverTimezone=Asia/Seoul
-      driver-class-name: com.mysql.cj.jdbc.Driver
-      username: user01
-      password: user01  

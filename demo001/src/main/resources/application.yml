@@ -10,7 +10,8 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
   datasource:
-    url: jdbc:mysql://10.8.180.139:13306/demo01?useSSL=false&serverTimezone=Asia/Seoul
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://192.168.100.100:13306/demo
     username: user01
     password: user01
 

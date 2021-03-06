@@ -10,13 +10,12 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
   datasource:
-    hikari:      connection-timeout: 5000
-      validation-timeout: 1000
-      maximum-pool-size: 30
-    url: jdbc:mysql://10.8.180.139:13306/demo04?useSSL=false&serverTimezone=Asia/Seoul
+    url: jdbc:mariadb://192.168.100.100:13306/demo
     username: user01
     password: user01
+    driver-class-name: org.mariadb.jdbc.Driver
   session:
     store-type: REDIS
-  redis:    host: 10.8.180.139
+  redis:
+    host: 192.168.100.100
     port: 6379

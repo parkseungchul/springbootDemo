@@ -10,9 +10,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.psc.demo014</groupId>
-	<artifactId>demo014</artifactId>
+	<artifactId>demo0041</artifactId>
 	<version>1.0</version>
-	<name>demo014</name>
+	<name>demo0041</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -53,10 +53,10 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client -->
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
+			<groupId>org.mariadb.jdbc</groupId>
+			<artifactId>mariadb-java-client</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>

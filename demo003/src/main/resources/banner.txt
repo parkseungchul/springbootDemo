@@ -11,24 +11,7 @@
 | | |   ||   |___ |       ||  | |  || | |   || | |   | ___|   |                           
 | |_|   ||    ___||       ||  |_|  || |_|   || |_|   ||___    |                           
 |       ||   |___ | ||_|| ||       ||       ||       | ___|   |                           
-|______| |_______||_|   |_||_______||_______||_______||_______|  
- 
-1. Spring Security 적용
-  - 아이디/패스워드
-    member/member
-    manager/manager
-    admin/admin
-
-2. JWT token 적용
-  - 윈도우 cmd창 UTF-8 설정: chcp 65001 
-
-  - 테스트 방법 
-    curl -i -d "username=admin&password=admin" -X POST http://localhost:8080/loginAction
-    curl -X POST -H "Authorization: ${token}" http://localhost:8080/api/test    
-  
-3. Redis 적용
-
-4. 스프링 시큐리티  + 레디스 설정 OK
+|______| |_______||_|   |_||_______||_______||_______||_______|
 
  
   
