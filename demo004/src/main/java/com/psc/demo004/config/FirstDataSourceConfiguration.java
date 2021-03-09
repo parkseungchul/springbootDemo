@@ -26,13 +26,11 @@ public class FirstDataSourceConfiguration {
      public DataSource firstDataSource() {
          return DataSourceBuilder.create().build();
      }
-     
 
      @Bean(name = "dataSource1")
      public DataSource dataSource1() {
          return new LazyConnectionDataSourceProxy(firstDataSource());
      }
-
 
      @Bean(name = "firstSqlSessionFactory")
      public SqlSessionFactory firstSqlSessionFactory(@Qualifier("dataSource1") DataSource dataSource1,

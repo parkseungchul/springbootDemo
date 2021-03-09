@@ -58,7 +58,7 @@ grant all privileges on demo2.* to 'user01'@'%';</pre></code>
 3. 트랜잭션 테스트
 
 # demo0042 
-1. 이 기종 트랜잭션 JPA, Mybatis, oracle, mariadb
+1. 이 기종 트랜잭션 JPA, Mybatis, oracle , mariadb
 <code><pre>docker run -d -p 1521:1521 --name ora11g parkseungchul/db:ora11g
 sqlplus system/oracle   
 create user user01 identified  by user01;

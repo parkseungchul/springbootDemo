@@ -32,8 +32,6 @@ public class Emp1 {
 		Dept1 dept = new Dept1();
 		dept.setDeptno(deptno);
 		this.dept = dept;
-		
-		
 	}
 	
 	@Id
