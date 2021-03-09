@@ -7,13 +7,13 @@ TODO
 - Table에 PK가 두 개 이상일 경우
 - LOB 타입 추가
 - DB Table 날짜 자동 업데이트 방법
-<code><pre>docker run -d --name mariaDB \
-  -e MYSQL_DATABASE=demo \
-  -e MYSQL_USER=user01 \
-  -e MYSQL_PASSWORD=user01 \
-  -e MYSQL_ROOT_PASSWORD=password \
-  -p 13306:3306 \
-  -v /app/maria:/var/lib/mysql \
+<code><pre>docker run -d --name mariaDB \\
+  -e MYSQL_DATABASE=demo \\
+  -e MYSQL_USER=user01 \\
+  -e MYSQL_PASSWORD=user01 \\
+  -e MYSQL_ROOT_PASSWORD=password \\
+  -p 13306:3306 \\
+  -v /app/maria:/var/lib/mysql \\
   mariadb</pre></code>
   
 # demo002
@@ -47,22 +47,22 @@ mysql -u root -p
 create schema demo2;
 grant all privileges on demo2.* to 'user01'@'%';</pre></code>
 
-아래와 같이 포트 변경해서 두개의 DB를 띄
-<code><pre>docker run -d --name mariaDB1 \
--e MYSQL_DATABASE=demo \
--e MYSQL_USER=user01 \
--e MYSQL_PASSWORD=user01 \
--e MYSQL_ROOT_PASSWORD=password \
--p 13306:3306 \
--v /app/maria1:/var/lib/mysql \
+아래와 같이 포트 변경해서 두개의 DB를 띄움 
+<code><pre>docker run -d --name mariaDB1 \\
+-e MYSQL_DATABASE=demo \\
+-e MYSQL_USER=user01 \\
+-e MYSQL_PASSWORD=user01 \\
+-e MYSQL_ROOT_PASSWORD=password \\
+-p 13306:3306 \\
+-v /app/maria1:/var/lib/mysql \\
 mariadb</pre></code>
-<code><pre>docker run -d --name mariaDB2 \
--e MYSQL_DATABASE=demo \
--e MYSQL_USER=user01 \
--e MYSQL_PASSWORD=user01 \
--e MYSQL_ROOT_PASSWORD=password \
--p 23306:3306 \
--v /app/maria2:/var/lib/mysql \
+<code><pre>docker run -d --name mariaDB2 \\
+-e MYSQL_DATABASE=demo \\
+-e MYSQL_USER=user01 \\
+-e MYSQL_PASSWORD=user01 \\
+-e MYSQL_ROOT_PASSWORD=password \\
+-p 23306:3306 \\
+-v /app/maria2:/var/lib/mysql \\
 mariadb</pre></code>
 
 
