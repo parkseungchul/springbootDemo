@@ -20,7 +20,7 @@ public class DeptServiceImpl implements DeptService{
 	DeptRepository2 deptRepository2;
 	
 	@Override
-	@Transactional(rollbackFor = Exception.class)
+	@Transactional
 	public void transcationXATest(){
 		Dept1 dept50 = new Dept1(50, "CCCC", "CCCC");
 		deptRepository1.save(dept50);
