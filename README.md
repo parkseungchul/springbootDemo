@@ -3,8 +3,8 @@
 2. log-back.xml
 3. JPA 기반의 EMP, DEPT 테이블을 이용하여 CRUD
 4. JUnit 을 이용한 CRUD Test, Assert 를 이용한 결과 체크
+5. Table PK가 두 개 이상일 경우 2021.12.20
 TODO
-- Table에 PK가 두 개 이상일 경우
 - LOB 타입 추가
 - DB Table 날짜 자동 업데이트 방법
 <code><pre>docker run -d --name mariaDB \\

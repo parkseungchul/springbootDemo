@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.jdo.annotations.Transactional;
 
+import com.psc.demo001.domain.DeptRepository;
+import com.psc.demo001.domain.EmpRepository;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -51,14 +53,7 @@ public class T003_EMP_CRUD {
 		}
 		empRepository.saveAll(empList);
 	}
-	
-	@Test
-	@Transactional
-	public void EMP_테스트_데이터_삭제() {
-		empRepository.deleteByEmpno(9999);
-		empRepository.deleteByDeptDeptno(90);
-	}
-	
+
 	@Test
 	public void EMP001_조인정보_가져오기() {
 		empRepository.findByEmp().forEach(emp -> {

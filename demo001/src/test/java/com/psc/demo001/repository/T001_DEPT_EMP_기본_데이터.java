@@ -8,6 +8,8 @@ import java.util.List;
 
 import javax.jdo.annotations.Transactional;
 
+import com.psc.demo001.domain.DeptRepository;
+import com.psc.demo001.domain.EmpRepository;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,4 +1,4 @@
-package com.psc.demo001.repository;
+package com.psc.demo001.domain;
 
 import java.util.List;
 
