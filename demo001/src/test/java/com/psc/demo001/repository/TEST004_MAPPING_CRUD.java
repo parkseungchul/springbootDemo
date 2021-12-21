@@ -33,7 +33,6 @@ public class TEST004_MAPPING_CRUD {
         Pks_DeptEmp pks_deptEmp;
         Mapping mapping;
 
-
         pks_deptEmp = new Pks_DeptEmp(10, 7839);
         mapping = new Mapping(pks_deptEmp, "ACCOUNTING", "KING");
         mappingRepository.save(mapping);
