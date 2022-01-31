@@ -48,21 +48,21 @@ create schema demo2;
 grant all privileges on demo2.* to 'user01'@'%';</pre></code>
 
 아래와 같이 포트 변경해서 두개의 DB를 띄움 
-<code><pre>docker run -d --name mariaDB1 \\
--e MYSQL_DATABASE=demo \\
--e MYSQL_USER=user01 \\
--e MYSQL_PASSWORD=user01 \\
--e MYSQL_ROOT_PASSWORD=password \\
--p 13306:3306 \\
--v /app/maria1:/var/lib/mysql \\
+<code><pre>docker run -d --name mariaDB1 \
+-e MYSQL_DATABASE=demo \
+-e MYSQL_USER=user01 \
+-e MYSQL_PASSWORD=user01 \
+-e MYSQL_ROOT_PASSWORD=password \
+-p 13306:3306 \
+-v /app/maria1:/var/lib/mysql \
 mariadb</pre></code>
-<code><pre>docker run -d --name mariaDB2 \\
--e MYSQL_DATABASE=demo \\
--e MYSQL_USER=user01 \\
--e MYSQL_PASSWORD=user01 \\
--e MYSQL_ROOT_PASSWORD=password \\
--p 23306:3306 \\
--v /app/maria2:/var/lib/mysql \\
+<code><pre>docker run -d --name mariaDB2 \
+-e MYSQL_DATABASE=demo \
+-e MYSQL_USER=user01 \
+-e MYSQL_PASSWORD=user01 \
+-e MYSQL_ROOT_PASSWORD=password \
+-p 23306:3306 \
+-v /app/maria2:/var/lib/mysql \
 mariadb</pre></code>
 
 
